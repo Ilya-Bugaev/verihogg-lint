@@ -18,6 +18,7 @@
 #include "rules/assignment_pattern.h"
 #include "rules/assignment_pattern_context.h"
 #include "rules/assignment_pattern_values.h"
+#include "rules/banned_program_blocks.h"
 #include "rules/circular_inheritance.h"
 #include "rules/class_variable_lifetime.h"
 #include "rules/concatenation_multiplier.h"
@@ -254,6 +255,9 @@ const auto allRules = std::to_array<Rule>({
      .description =
          "Instance  of checker is not allowed in procedural code of checker",
      .check = CheckIllegalCheckerInstance},
+    {.idName = "BANNED_PROGRAM_BLOCKS",
+     .description = "Program blocks not allowed",
+     .check = CheckBannedProgramBlocks},
 });
 
 constexpr size_t AllRulesSize = allRules.size();
