@@ -14,6 +14,7 @@
 #include "main/lint_rules.h"
 #include "rules/banned_program_blocks.h"
 #include "rules/banned_randsequence.h"
+#include "rules/banned_simulation_control_tasks.h"
 #include "utils/init.h"
 
 namespace fs = std::filesystem;
@@ -105,6 +106,17 @@ TEST(BannedRandsequence, NoError) {
 TEST(BannedRandsequence, RaiseError) {
   expectError(basePath() / "BannedRandsequence" / "RaiseError",
               verihogg_lint::LINT_BANNED_RANDSEQUENCE, CheckBannedRandsequence);
+}
+
+TEST(BannedSimulationControlTasks, NoError) {
+  expectNoErrors(basePath() / "BannedSimulationControlTasks" / "NoError",
+                 CheckBannedSimulationControlTasks);
+}
+
+TEST(BannedSimulationControlTasks, RaiseError) {
+  expectError(basePath() / "BannedSimulationControlTasks" / "RaiseError",
+              verihogg_lint::LINT_BANNED_SIMULATION_CONTROL_TASKS,
+              CheckBannedSimulationControlTasks);
 }
 
 auto main(int argc, char** argv) -> int {

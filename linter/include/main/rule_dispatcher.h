@@ -20,6 +20,7 @@
 #include "rules/assignment_pattern_values.h"
 #include "rules/banned_program_blocks.h"
 #include "rules/banned_randsequence.h"
+#include "rules/banned_simulation_control_tasks.h"
 #include "rules/circular_inheritance.h"
 #include "rules/class_variable_lifetime.h"
 #include "rules/concatenation_multiplier.h"
@@ -262,6 +263,10 @@ const auto allRules = std::to_array<Rule>({
     {.idName = "BANNED_RANDSEQUENCE",
      .description = "randsequence not allowed",
      .check = CheckBannedRandsequence},
+    {.idName = "BANNED_SIMULATION_CONTROL_TASKS",
+     .description = "System simulation control tasks $stop, $finish, $exit "
+                    "not allowed",
+     .check = CheckBannedSimulationControlTasks},
 });
 
 constexpr size_t AllRulesSize = allRules.size();
