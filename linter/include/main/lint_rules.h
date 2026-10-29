@@ -89,6 +89,7 @@ enum LintIdEnum : uint16_t {
   LINT_UNDECLARED_CHECKER,
   LINT_ILLEGAL_CHECKER_INSTANCE,
   LINT_BANNED_PROGRAM_BLOCKS,
+  LINT_BANNED_RANDSEQUENCE,
 };
 // NOLINTEND(cppcoreguidelines-use-enum-class)
 
@@ -315,6 +316,8 @@ inline constexpr std::array kLintRules = {
                  .text = "Illegal checker instance %s"},
     LintRuleInfo{.type = LINT_BANNED_PROGRAM_BLOCKS,
                  .text = "Program block not allowed: %s"},
+    LintRuleInfo{.type = LINT_BANNED_RANDSEQUENCE,
+                 .text = "randsequence not allowed: %s"},
 };
 
 inline void RegisterLintRules() {

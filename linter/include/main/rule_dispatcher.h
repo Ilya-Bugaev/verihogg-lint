@@ -19,6 +19,7 @@
 #include "rules/assignment_pattern_context.h"
 #include "rules/assignment_pattern_values.h"
 #include "rules/banned_program_blocks.h"
+#include "rules/banned_randsequence.h"
 #include "rules/circular_inheritance.h"
 #include "rules/class_variable_lifetime.h"
 #include "rules/concatenation_multiplier.h"
@@ -258,6 +259,9 @@ const auto allRules = std::to_array<Rule>({
     {.idName = "BANNED_PROGRAM_BLOCKS",
      .description = "Program blocks not allowed",
      .check = CheckBannedProgramBlocks},
+    {.idName = "BANNED_RANDSEQUENCE",
+     .description = "randsequence not allowed",
+     .check = CheckBannedRandsequence},
 });
 
 constexpr size_t AllRulesSize = allRules.size();

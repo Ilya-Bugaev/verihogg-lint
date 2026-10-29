@@ -13,6 +13,7 @@
 
 #include "main/lint_rules.h"
 #include "rules/banned_program_blocks.h"
+#include "rules/banned_randsequence.h"
 #include "utils/init.h"
 
 namespace fs = std::filesystem;
@@ -94,6 +95,16 @@ TEST(BannedProgramBlocks, RaiseError) {
   expectError(basePath() / "BannedProgramBlocks" / "RaiseError",
               verihogg_lint::LINT_BANNED_PROGRAM_BLOCKS,
               CheckBannedProgramBlocks);
+}
+
+TEST(BannedRandsequence, NoError) {
+  expectNoErrors(basePath() / "BannedRandsequence" / "NoError",
+                 CheckBannedRandsequence);
+}
+
+TEST(BannedRandsequence, RaiseError) {
+  expectError(basePath() / "BannedRandsequence" / "RaiseError",
+              verihogg_lint::LINT_BANNED_RANDSEQUENCE, CheckBannedRandsequence);
 }
 
 auto main(int argc, char** argv) -> int {
