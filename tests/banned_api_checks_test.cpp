@@ -13,6 +13,7 @@
 
 #include "main/lint_rules.h"
 #include "rules/banned_program_blocks.h"
+#include "rules/banned_psprintf.h"
 #include "rules/banned_randsequence.h"
 #include "rules/banned_simulation_control_tasks.h"
 #include "utils/init.h"
@@ -117,6 +118,16 @@ TEST(BannedSimulationControlTasks, RaiseError) {
   expectError(basePath() / "BannedSimulationControlTasks" / "RaiseError",
               verihogg_lint::LINT_BANNED_SIMULATION_CONTROL_TASKS,
               CheckBannedSimulationControlTasks);
+}
+
+TEST(BannedPsprintf, NoError) {
+  expectNoErrors(basePath() / "BannedPsprintf" / "NoError",
+                 CheckBannedPsprintf);
+}
+
+TEST(BannedPsprintf, RaiseError) {
+  expectError(basePath() / "BannedPsprintf" / "RaiseError",
+              verihogg_lint::LINT_BANNED_PSPRINTF, CheckBannedPsprintf);
 }
 
 auto main(int argc, char** argv) -> int {
